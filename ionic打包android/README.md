@@ -28,4 +28,5 @@
 
 ## 编译结束后`Android Studio`右下角弹出小窗，点击`ˇ`展开，点击`locate`弹出文件资源管理器显示编译后APK文件
 ![](res/as_build_toast.png)
+
 ![](res/as_file_apk.png)
