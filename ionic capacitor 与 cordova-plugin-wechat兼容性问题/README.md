@@ -1,6 +1,4 @@
-# cordova-plugin-wechat `Android`
-
-> 与capacitor存在兼容性问题 需按照以下步骤手动配置
+# cordova-plugin-wechat
 
 |环境|版本|
 |:-----|:-----|
@@ -8,20 +6,21 @@
 |@ionic-native/wechat|5.19.1|
 |cordova-plugin-wechat|2.9.0|
 
-> install
 ```bash
  npm install @ionic-native/wechat
  npm install cordova-plugin-wechat
  npx cap sync
 ```
 
+# `Android` 部分
+
 > Activity
 
-拷贝 `node_modules/cordova-plugin-wechat/src/android/` 目录下 `EntryActivity.java` , `WXEntryActivity.java` , `WXPayEntryActivity.java` 至 `android\app\src\main\java\com\globletech\masses\wxapi`
+- 拷贝 `node_modules/cordova-plugin-wechat/src/android/` 目录下 `EntryActivity.java` , `WXEntryActivity.java` , `WXPayEntryActivity.java` 至 `android\app\src\main\java\com\globletech\masses\wxapi`
 
 > Wechat.java
 
-修改 `android/capacitor-cordova-android-plugins/src/main/java/xu/li/cordova/wechat/Wechat.java`
+- 修改 `android/capacitor-cordova-android-plugins/src/main/java/xu/li/cordova/wechat/Wechat.java`
 ```
 public static String getAppId(CordovaPreferences f_preferences) {
     //if (appId == null) {
@@ -39,7 +38,7 @@ public static String getAppId(CordovaPreferences f_preferences) {
 
 > AndroidManifest
 
-剪切 `android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml` 中
+- 剪切 `android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml` 中
 ```
 <activity android:name=".wxapi.WXEntryActivity" android:label="@string/launcher_name" android:exported="true" android:taskAffinity="com.globletech.masses" android:launchMode="singleTask">
   <intent-filter>
@@ -56,13 +55,35 @@ public static String getAppId(CordovaPreferences f_preferences) {
   </intent-filter>
 </activity>
 ```
-粘贴至 `android\app\src\main\AndroidManifest.xml` 追加至application里
+- 粘贴至 `android\app\src\main\AndroidManifest.xml` 追加至application里
 并修改 `$WECHATAPPID` 为正确的WECHATAPPID,
-修改 `@string/launcher_name` 为 `@string/app_name`
+
+> 解决 `@string/launcher_name` 报错
+>
+- 修改 `@string/launcher_name` 为 `@string/app_name` 
+- 或者 在 `android/app/src/main/res/values/strings.xml` 中追加 `<string name="launcher_name">SOME_STRING</string>`
 
 > build.gradle
 
-`android\app\build.gradle` 中 `dependencies` 下添加
+- `android\app\build.gradle` 中 `dependencies` 下添加
 ```
 implementation 'org.apache.cordova:framework:7.0.0'
 ```
+
+# `iOS` 部分
+[iOS SDK接入指南](https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Access_Guide/iOS.html)
+
+> Info.plist
+- `ios\App\App\Info.plist` 中追加
+```
+  <preference name="WECHATAPPID" value="YOUR_WECHATAPPID"/>
+  <preference name="UNIVERSALLINK" value="YOUR_UNIVERSALLINK"/>
+```
+
+> TARGETS
+- 追加 `LSApplicationQueriesSchemes` 配置
+![](res/ios_LSApplicationQueriesSchemes.png)
+- 追加 `URL Types` 配置
+![](res/ios_URL_Types.png)
+- 追加 `Other Linker Flags` 配置
+![](res/ios_Other_Linker_Flags.png)
