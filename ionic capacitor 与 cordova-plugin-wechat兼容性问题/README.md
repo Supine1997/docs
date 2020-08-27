@@ -87,3 +87,9 @@ implementation 'org.apache.cordova:framework:7.0.0'
 ![](res/ios_URL_Types.png)
 - 追加 `Other Linker Flags` 配置
 ![](res/ios_Other_Linker_Flags.png)
+
+> 事件回调失效
+- 可能插件问题，未解决之前可监听APP从后台返回前台事件
+```
+document.addEventListener("resume", your_handler, false);
+```
