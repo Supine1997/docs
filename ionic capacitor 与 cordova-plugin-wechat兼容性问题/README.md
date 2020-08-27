@@ -15,29 +15,15 @@
 # `Android` 部分
 
 > Activity
-
 - 拷贝 `node_modules/cordova-plugin-wechat/src/android/` 目录下 `EntryActivity.java` , `WXEntryActivity.java` , `WXPayEntryActivity.java` 至 `android\app\src\main\java\com\globletech\masses\wxapi`
 
-> Wechat.java
-
-- 修改 `android/capacitor-cordova-android-plugins/src/main/java/xu/li/cordova/wechat/Wechat.java`
+> config.xml
+- `android/app/src/main/res/xml/config.xml` 追加 `WECHATAPPID` 配置
 ```
-public static String getAppId(CordovaPreferences f_preferences) {
-    //if (appId == null) {
-    //    if(f_preferences != null) {
-    //        appId = f_preferences.getString(WXAPPID_PROPERTY_KEY, "");
-    //    }else if(wx_preferences != null){
-    //        appId = wx_preferences.getString(WXAPPID_PROPERTY_KEY, "");
-    //    }
-    //}
-    //return appId;
-    //无法读取配置$WECHATAPPID 故直接返回
-    return $WECHATAPPID;
-}
+<preference name="WECHATAPPID" value="YOUR_WECHATAPPID"/>
 ```
 
 > AndroidManifest
-
 - 剪切 `android\capacitor-cordova-android-plugins\src\main\AndroidManifest.xml` 中
 ```
 <activity android:name=".wxapi.WXEntryActivity" android:label="@string/launcher_name" android:exported="true" android:taskAffinity="com.globletech.masses" android:launchMode="singleTask">
