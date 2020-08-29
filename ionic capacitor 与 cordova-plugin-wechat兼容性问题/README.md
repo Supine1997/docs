@@ -71,7 +71,7 @@ implementation 'org.apache.cordova:framework:7.0.0'
 ![](res/ios_LSApplicationQueriesSchemes.png)
 - 追加 `URL Types` 配置
 ![](res/ios_URL_Types.png)
-- 追加 `Other Linker Flags` 配置
+- 追加 `Other Linker Flags` 配置 `-ObjC`
 ![](res/ios_Other_Linker_Flags.png)
 
 > 事件回调失效
