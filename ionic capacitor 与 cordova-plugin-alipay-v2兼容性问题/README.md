@@ -32,3 +32,9 @@
 ```
 app_id = [[self.commandDelegate settings] objectForKey:@"alipayid"];
 ```
+
+# 使用方法
+```
+declare var cordova: any;
+cordova.plugins.alipay.payment(params, successHandler, errorHandler)
+```
