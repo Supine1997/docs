@@ -1,12 +1,14 @@
 # cordova-plugin-alipay-v2
 
+- [本地修复仓库](http://192.168.3.168:12000/tool/cordova-plugin-alipay-v2)
+
 |环境|版本|
 |:-----|:-----|
 |@ionic/angular|5.0.0|
 |cordova-plugin-alipay-v2|2.0.0|
 
 ```bash
- npm install cordova-plugin-alipay-v2
+ npm install git+http://192.168.3.168:12000/tool/cordova-plugin-alipay-v2.git
  npx cap sync
 ```
 
@@ -26,11 +28,6 @@
         <string>ali$APP_ID</string>
     </array>
 </dict>
-```
-> ios/capacitor-cordova-ios-plugins/sources/CordovaPluginAlipayV2/alipay.m
-- 修改 `pluginInitialize`
-```
-app_id = [[self.commandDelegate settings] objectForKey:@"alipayid"];
 ```
 
 # 使用方法
