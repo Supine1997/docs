@@ -59,8 +59,8 @@ implementation 'org.apache.cordova:framework:7.0.0'
 # `iOS` 部分
 [iOS SDK接入指南](https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Access_Guide/iOS.html)
 
-> Info.plist
-- `ios\App\App\Info.plist` 中追加
+> config.xml
+- `ios\App\App\config.xml` 中追加
 ```
   <preference name="WECHATAPPID" value="YOUR_WECHATAPPID"/>
   <preference name="UNIVERSALLINK" value="YOUR_UNIVERSALLINK"/>
